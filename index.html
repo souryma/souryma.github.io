@@ -1,7 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .overlay h1 {
+      color: white;
+      font-size: 3rem;
+    }
+
+    .navbar {
+      position: fixed;
+      top: -100px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      transition: top 1.5s ease-in-out;
+    }
+
+    .navbar .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .navbar .brand:hover { color: #ff5733; }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .nav-links a:hover:nth-child(1) { background-color: #ff5733; }
+    .nav-links a:hover:nth-child(2) { background-color: #33ff57; }
+    .nav-links a:hover:nth-child(3) { background-color: #3357ff; }
+
+    .navbar .external-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .navbar .external-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .navbar .external-links a:hover:nth-child(1) { background-color: #0077b5; } /* LinkedIn Blue */
+    .navbar .external-links a:hover:nth-child(2) { background-color: #ffcc00; } /* CV Highlight */
+
+    .scroll-arrow {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      visibility: hidden;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+    }
+
+    .scroll-arrow img {
+      width: 60px;
+      height: 60px;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translate(-50%, 0);
+      }
+      50% {
+        transform: translate(-50%, -10px);
+      }
+    }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    #about { background: #f4f4f4; }
+    #projects { background: #ddd; }
+    #contact { background: #bbb; }
+
+    .section h2 {
+      margin-bottom: 1rem;
+    }
+
+    .section p {
+      max-width: 800px;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <div class="video-container" id="top">
+    <video autoplay muted loop playsinline>
+      <source src="DemoVideo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay" id="overlay">
+      <h1>Ingénieur informatique et multimédia</h1>
+    </div>
+    <div class="scroll-arrow" id="scroll-arrow" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">
+      <img src="scroll-arrow.png" alt="Scroll down">
+    </div>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="brand" onclick="document.getElementById('top').scrollIntoView({ behavior: 'smooth' });">Antoine Martin</div>
+    <div class="nav-links">
+      <a href="#about">À propos</a>
+      <a href="#projects">Projets</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="external-links">
+      <a href="https://www.linkedin.com/in/antoine-martin-80a64117b/" target="_blank">LinkedIn</a>
+      <a href="Antoine_Martin_Resume.pdf" target="_blank">CV</a>
+    </div>
+  </nav>
+
+  <div id="about" class="section">
+    <h2>À propos de moi</h2>
+    <p>Ingénieur informatique et multimédia. 4 ans d'expérience.</p>
+  </div>
+
+  <div id="projects" class="section">
+    <h2>Mes Projets</h2>
+    <p>Projets classe / Projets perso / Projets pro (Airbus/NYX).</p>
+  </div>
+
+  <div id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Email : antoine.martin885[at]gmail.com</p>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('overlay').style.opacity = '1';
+      document.getElementById('overlay').style.visibility = 'visible';
+      document.getElementById('navbar').style.top = '0';
+      document.getElementById('scroll-arrow').style.opacity = '1';
+      document.getElementById('scroll-arrow').style.visibility = 'visible';
+    }, 4000);
+  </script>
 </body>
 </html>
