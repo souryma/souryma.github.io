@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon Portfolio</title>
+  <title>Antoine Martin | Portfolio</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    
     * {
       margin: 0;
       padding: 0;
@@ -13,7 +15,7 @@
 
     body, html {
       height: 100%;
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', Arial, sans-serif;
       scroll-behavior: smooth;
     }
 
@@ -39,14 +41,39 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
       opacity: 0;
       visibility: hidden;
       transition: opacity 1.5s ease-in-out;
     }
 
-    .overlay h1 {
+    .overlay h1, .overlay h2, .overlay .buttons {
       color: white;
+      text-align: center;
+    }
+
+    .overlay h1 {
       font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .overlay h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .overlay .buttons a {
+      margin: 0 10px;
+      padding: 0.5rem 1rem;
+      background: #ff5733;
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .overlay .buttons a:hover {
+      background: #ff784e;
     }
 
     .navbar {
@@ -58,7 +85,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 5%;
+      padding: 1rem 10%;
       transition: top 1.5s ease-in-out;
     }
 
@@ -90,7 +117,7 @@
 
     .navbar .external-links {
       display: flex;
-      gap: 15px;
+      gap: 20px;
     }
 
     .navbar .external-links a {
@@ -101,8 +128,8 @@
       transition: background-color 0.3s ease-in-out;
     }
 
-    .navbar .external-links a:hover:nth-child(1) { background-color: #0077b5; } /* LinkedIn Blue */
-    .navbar .external-links a:hover:nth-child(2) { background-color: #ffcc00; } /* CV Highlight */
+    .navbar .external-links a:hover:nth-child(1) { background-color: #0077b5; }
+    .navbar .external-links a:hover:nth-child(2) { background-color: #ffcc00; }
 
     .scroll-arrow {
       position: absolute;
@@ -134,14 +161,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      flex-direction: column;
       padding: 2rem;
     }
-
-    #about { background: #f4f4f4; }
-    #projects { background: #ddd; }
-    #contact { background: #bbb; }
 
     .section h2 {
       margin-bottom: 1rem;
@@ -152,6 +173,30 @@
       text-align: center;
       font-size: 1.2rem;
     }
+
+    #about {
+      background: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .about-content img {
+      width: 500px;
+      height: 400px;
+      border-radius: 10%;
+      object-fit: cover;
+    }
+
+    #projects { background: #ddd; }
+    #contact { background: #bbb; }
+    
   </style>
 </head>
 <body>
@@ -161,7 +206,12 @@
       Your browser does not support the video tag.
     </video>
     <div class="overlay" id="overlay">
-      <h1>Ingénieur informatique et multimédia</h1>
+      <h1>Antoine Martin</h1>
+      <h2>Ingénieur informatique et multimédia</h2>
+      <div class="buttons">
+        <a href="#projects">Voir mes projets</a>
+        <a href="#contact">Me contacter</a>
+      </div>
     </div>
     <div class="scroll-arrow" id="scroll-arrow" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">
       <img src="scroll-arrow.png" alt="Scroll down">
@@ -169,31 +219,42 @@
   </div>
 
   <nav class="navbar" id="navbar">
-    <div class="brand" onclick="document.getElementById('top').scrollIntoView({ behavior: 'smooth' });">Antoine Martin</div>
+    <div class="brand" style="margin-right: auto;" onclick="document.getElementById('top').scrollIntoView({ behavior: 'smooth' });">Antoine Martin</div>
     <div class="nav-links">
       <a href="#about">À propos</a>
       <a href="#projects">Projets</a>
       <a href="#contact">Contact</a>
     </div>
-    <div class="external-links">
+    <div class="external-links" style="margin-left: auto;">
       <a href="https://www.linkedin.com/in/antoine-martin-80a64117b/" target="_blank">LinkedIn</a>
       <a href="Antoine_Martin_Resume.pdf" target="_blank">CV</a>
     </div>
   </nav>
 
   <div id="about" class="section">
-    <h2>À propos de moi</h2>
-    <p>Ingénieur informatique et multimédia. 4 ans d'expérience.</p>
+    <div class="about-content">
+      <img src="ProfileBanner.JPG" alt="Antoine Martin">
+      <div class="about-text">
+        <h2>À propos de moi</h2>
+        <p>Ingénieur informatique et multimédia avec 4 ans d'expérience dans le développement logiciel et la création de contenus interactifs. Passionné par les nouvelles technologies et la réalité virtuelle.</p>
+      </div>
+    </div>
   </div>
 
   <div id="projects" class="section">
+    <img src="profilePicture.png" alt="Antoine Martin">
+    <div class="about-text">
     <h2>Mes Projets</h2>
     <p>Projets classe / Projets perso / Projets pro (Airbus/NYX).</p>
   </div>
+  </div>
 
   <div id="contact" class="section">
+    <img src="profilePicture.png" alt="Antoine Martin">
+    <div class="about-text">
     <h2>Contact</h2>
     <p>Email : antoine.martin885[at]gmail.com</p>
+  </div>
   </div>
 
   <script>
