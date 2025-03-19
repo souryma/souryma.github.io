@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Antoine Martin | Portfolio</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body, html {
+    body,
+    html {
       height: 100%;
       font-family: 'Roboto', Arial, sans-serif;
       scroll-behavior: smooth;
@@ -47,7 +47,9 @@
       transition: opacity 1.5s ease-in-out;
     }
 
-    .overlay h1, .overlay h2, .overlay .buttons {
+    .overlay h1,
+    .overlay h2,
+    .overlay .buttons {
       color: white;
       text-align: center;
     }
@@ -96,7 +98,9 @@
       transition: color 0.3s ease-in-out;
     }
 
-    .navbar .brand:hover { color: #ff5733; }
+    .navbar .brand:hover {
+      color: #ff5733;
+    }
 
     .nav-links {
       display: flex;
@@ -111,9 +115,17 @@
       transition: background-color 0.3s ease-in-out;
     }
 
-    .nav-links a:hover:nth-child(1) { background-color: #ff5733; }
-    .nav-links a:hover:nth-child(2) { background-color: #33ff57; }
-    .nav-links a:hover:nth-child(3) { background-color: #3357ff; }
+    .nav-links a:hover:nth-child(1) {
+      background-color: #ff5733;
+    }
+
+    .nav-links a:hover:nth-child(2) {
+      background-color: #33ff57;
+    }
+
+    .nav-links a:hover:nth-child(3) {
+      background-color: #3357ff;
+    }
 
     .navbar .external-links {
       display: flex;
@@ -128,8 +140,13 @@
       transition: background-color 0.3s ease-in-out;
     }
 
-    .navbar .external-links a:hover:nth-child(1) { background-color: #0077b5; }
-    .navbar .external-links a:hover:nth-child(2) { background-color: #ffcc00; }
+    .navbar .external-links a:hover:nth-child(1) {
+      background-color: #0077b5;
+    }
+
+    .navbar .external-links a:hover:nth-child(2) {
+      background-color: #ffcc00;
+    }
 
     .scroll-arrow {
       position: absolute;
@@ -148,16 +165,19 @@
     }
 
     @keyframes bounce {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translate(-50%, 0);
       }
+
       50% {
         transform: translate(-50%, -10px);
       }
     }
 
     .section {
-      height: 100vh;
+      height: 75vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -175,30 +195,182 @@
     }
 
     #about {
-      background: #f4f4f4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 50px;
+      max-width: 1100px;
+      margin: 20px auto;
+      /* Réduction de la marge */
+      padding: 10px 20px;
+      /* Moins d’espace vertical */
     }
 
     .about-content {
       display: flex;
-      align-items: center;
+      align-items: stretch;
+      gap: 40px;
+      margin-bottom: 10px;
+      /* Réduction de l'espace sous "À propos" */
     }
+
 
     .about-content img {
-      width: 500px;
-      height: 400px;
-      border-radius: 10%;
+      width: 320px;
+      height: auto;
+      border-radius: 20px;
       object-fit: cover;
+      border: 5px solid #b35c00da;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
     }
 
-    #projects { background: #ddd; }
-    #contact { background: #bbb; }
-    
+    .about-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-text h2 {
+      font-size: 28px;
+      color: #b35c00da;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .about-text p {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    .about-text p b {
+      color: #b35c00da;
+    }
+
+    @media (max-width: 1024px) {
+      #about {
+        max-width: 90%;
+      }
+
+      .about-content {
+        gap: 20px;
+      }
+
+      .about-content img {
+        width: 280px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-content img {
+        width: 100%;
+        max-height: 250px;
+        border-radius: 15px;
+      }
+    }
+
+    .about-extra {
+      display: flex;
+      gap: 50px;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 20px auto 0;
+      /* Réduction de la marge pour rapprocher les sections */
+    }
+
+    .experience,
+    .formation {
+      flex: 1;
+    }
+
+    .experience h2,
+    .formation h2 {
+      font-size: 24px;
+      color: #b35c00da;
+      margin-bottom: 10px;
+      /* Moins d’espace sous les titres */
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .experience-item,
+    .formation-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      /* Réduction de l’espace entre les items */
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .experience-item img,
+    .formation-item img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 3px solid #b35c00da;
+    }
+
+    .exp-text,
+    .formation-text {
+      flex: 1;
+    }
+
+    .exp-text b,
+    .formation-text b {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .exp-text p,
+    .formation-text p {
+      font-size: 15px;
+      color: #555;
+      margin: 3px 0;
+    }
+
+    @media (max-width: 768px) {
+      .about-extra {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .experience-item,
+      .formation-item {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .experience-item img,
+      .formation-item img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+
+
+
+
+    #projects {
+      background: #ddd;
+    }
+
+    #contact {
+      background: #bbb;
+    }
   </style>
 </head>
+
 <body>
   <div class="video-container" id="top">
     <video autoplay muted loop playsinline>
@@ -213,13 +385,15 @@
         <a href="#contact">Me contacter</a>
       </div>
     </div>
-    <div class="scroll-arrow" id="scroll-arrow" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">
-      <img src="scroll-arrow.png" alt="Scroll down">
+    <div class="scroll-arrow" id="scroll-arrow"
+      onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">
+      <img src="img/scroll-arrow.png" alt="Scroll down">
     </div>
   </div>
 
   <nav class="navbar" id="navbar">
-    <div class="brand" style="margin-right: auto;" onclick="document.getElementById('top').scrollIntoView({ behavior: 'smooth' });">Antoine Martin</div>
+    <div class="brand" style="margin-right: auto;"
+      onclick="document.getElementById('top').scrollIntoView({ behavior: 'smooth' });">Antoine Martin</div>
     <div class="nav-links">
       <a href="#about">À propos</a>
       <a href="#projects">Projets</a>
@@ -233,28 +407,107 @@
 
   <div id="about" class="section">
     <div class="about-content">
-      <img src="ProfileBanner.JPG" alt="Antoine Martin">
+      <img src="img/ProfileBanner.JPG" alt="Antoine Martin">
       <div class="about-text">
         <h2>À propos de moi</h2>
-        <p>Ingénieur informatique et multimédia avec 4 ans d'expérience dans le développement logiciel et la création de contenus interactifs. Passionné par les nouvelles technologies et la réalité virtuelle.</p>
+        <p>Moi c'est Antoine. Récemment diplômé en <b>ingénierie informatique et multimédia</b> au <b><a
+              href="https://enjmin.cnam.fr/enjmin/ecole-nationale-du-jeu-et-des-medias-interactifs-accueil-1126103.kjsp"
+              target="_blank">CNAM ENJMIN</a></b>, je suis passionné
+          par le
+          développement 3D, la réalité virtuelle et la création d’expériences immersives. Avec <b>plus de 4 ans
+            d’expérience professionnelle</b>, j’ai eu l’occasion de travailler sur des projets variés en programmation
+          3D, synthèse
+          d’image,
+          simulation et développement interactif.<br>
+          Ce qui me motive, c’est d’imaginer et de <b>donner vie à des univers captivants</b>, peu importe le support :
+          VR,
+          interactions sonores, Arduino, reconnaissance faciale… J’ai aussi un vrai intérêt pour le <b>lien entre le son
+            et
+            l’image</b>, car pour moi, l’audio représente plus de 50% de l’impact visuel.<br>
+          Mon parcours m’a permis d’occuper plusieurs rôles, de <b>développeur Unity</b> à <b>concepteur d’applications
+            en réalité
+            virtuelle</b>. Vous trouverez ci-dessous quelques projets, personnels et professionnels, sur lesquels j’ai
+          pu
+          travailler, seul ou en équipe.<br>
+          Toujours <b>curieux</b> et en quête de <b>nouvelles expériences vidéoludiques</b>, je continue d’explorer et
+          d’affiner ma
+          culture en jouant à des jeux variés. N’hésitez pas à me contacter par mail ou via LinkedIn, je serai ravi
+          culture en jouant à des <b>jeux variés</b>. N’hésitez pas à me contacter par mail ou via LinkedIn, je serai
+          ravi
+          d’échanger !
+        </p>
       </div>
     </div>
   </div>
 
+  <div class="about-extra">
+    <!-- Colonne Expérience Professionnelle -->
+    <div class="experience">
+      <h2>Expérience Professionnelle</h2>
+      <div class="experience-item">
+        <img src="img/Airbus.jpg" alt="Entreprise 1">
+        <div class="exp-text">
+          <b>Concepteur XR – AIRBUS</b>
+          <p><i>2022 - 2025 | Alternance</i></p>
+          <p>Conception et développement d'expériences immersives en XR sous Unity, Unreal Engine et Unigine.</p>
+        </div>
+      </div>
+      <div class="experience-item">
+        <img src="img/Nyx.png" alt="Entreprise 2">
+        <div class="exp-text">
+          <b>Développeur Unity – Studio NYX</b>
+          <p><i>2021 - 2022 | CDD </i></p>
+          <p>Participation au développement d'un moteur de simulation aéromaritme sous Unity.</p>
+        </div>
+      </div>
+      <div class="experience-item">
+        <img src="img/aurora_game_studio_logo.jpg" alt="Entreprise 3">
+        <div class="exp-text">
+          <b>Développeur – Aurora Game Studio</b>
+          <p><i>2021 | Stage + CDD </i></p>
+          <p>Développement d'API Java, C++ et C# pour une application Unity.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Colonne Formation -->
+    <div class="formation">
+      <h2>Formation</h2>
+      <div class="formation-item">
+        <img src="img/CnamENJMIN.jpg" alt="CNAM ENJMIN">
+        <div class="formation-text">
+          <b>CNAM ENJMIN</b>
+          <p><i>2022 - 2025</i></p>
+          <p>Diplôme en alternance d’ingénieur en informatique et multimédia.</p>
+        </div>
+      </div>
+      <div class="formation-item">
+        <img src="img/481px-La_Rochelle_Université.png" alt="Université Z">
+        <div class="formation-text">
+          <b>La Rochelle Université</b>
+          <p><i>2019 - 2021</i></p>
+          <p>DUT informatique</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div id="projects" class="section">
     <img src="profilePicture.png" alt="Antoine Martin">
     <div class="about-text">
-    <h2>Mes Projets</h2>
-    <p>Projets classe / Projets perso / Projets pro (Airbus/NYX).</p>
-  </div>
+      <h2>Mes Projets</h2>
+      <p>Projets classe / Projets perso / Projets pro (Airbus/NYX).</p>
+    </div>
   </div>
 
   <div id="contact" class="section">
-    <img src="profilePicture.png" alt="Antoine Martin">
+    <img src="img/profilePicture.png" alt="Antoine Martin">
     <div class="about-text">
-    <h2>Contact</h2>
-    <p>Email : antoine.martin885[at]gmail.com</p>
-  </div>
+      <h2>Contact</h2>
+      <p>Email : antoine.martin885[at]gmail.com</p>
+    </div>
   </div>
 
   <script>
@@ -267,4 +520,5 @@
     }, 4000);
   </script>
 </body>
+
 </html>
