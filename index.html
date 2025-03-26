@@ -5,370 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Antoine Martin | Portfolio</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body,
-    html {
-      height: 100%;
-      font-family: 'Roboto', Arial, sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    .video-container {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .video-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 1.5s ease-in-out;
-    }
-
-    .overlay h1,
-    .overlay h2,
-    .overlay .buttons {
-      color: white;
-      text-align: center;
-    }
-
-    .overlay h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .overlay h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .overlay .buttons a {
-      margin: 0 10px;
-      padding: 0.5rem 1rem;
-      background: #ff5733;
-      color: white;
-      text-decoration: none;
-      border-radius: 20px;
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    .overlay .buttons a:hover {
-      background: #ff784e;
-    }
-
-    .navbar {
-      position: fixed;
-      top: -100px;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 10%;
-      transition: top 1.5s ease-in-out;
-    }
-
-    .navbar .brand {
-      font-size: 1.5rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: color 0.3s ease-in-out;
-    }
-
-    .navbar .brand:hover {
-      color: #ff5733;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    .nav-links a:hover:nth-child(1) {
-      background-color: #ff5733;
-    }
-
-    .nav-links a:hover:nth-child(2) {
-      background-color: #33ff57;
-    }
-
-    .nav-links a:hover:nth-child(3) {
-      background-color: #3357ff;
-    }
-
-    .navbar .external-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .navbar .external-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    .navbar .external-links a:hover:nth-child(1) {
-      background-color: #0077b5;
-    }
-
-    .navbar .external-links a:hover:nth-child(2) {
-      background-color: #ffcc00;
-    }
-
-    .scroll-arrow {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      visibility: hidden;
-      animation: bounce 2s infinite;
-      cursor: pointer;
-    }
-
-    .scroll-arrow img {
-      width: 60px;
-      height: 60px;
-    }
-
-    @keyframes bounce {
-
-      0%,
-      100% {
-        transform: translate(-50%, 0);
-      }
-
-      50% {
-        transform: translate(-50%, -10px);
-      }
-    }
-
-    .section {
-      height: 75vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .section h2 {
-      margin-bottom: 1rem;
-    }
-
-    .section p {
-      max-width: 800px;
-      text-align: center;
-      font-size: 1.2rem;
-    }
-
-    #about {
-      max-width: 1100px;
-      margin: 20px auto;
-      /* Réduction de la marge */
-      padding: 10px 20px;
-      /* Moins d’espace vertical */
-    }
-
-    .about-content {
-      display: flex;
-      align-items: stretch;
-      gap: 40px;
-      margin-bottom: 10px;
-      /* Réduction de l'espace sous "À propos" */
-    }
-
-
-    .about-content img {
-      width: 320px;
-      height: auto;
-      border-radius: 20px;
-      object-fit: cover;
-      border: 5px solid #b35c00da;
-      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .about-text {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .about-text h2 {
-      font-size: 28px;
-      color: #b35c00da;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .about-text p {
-      font-size: 18px;
-      color: #333;
-      line-height: 1.7;
-      text-align: justify;
-    }
-
-    .about-text p b {
-      color: #b35c00da;
-    }
-
-    @media (max-width: 1024px) {
-      #about {
-        max-width: 90%;
-      }
-
-      .about-content {
-        gap: 20px;
-      }
-
-      .about-content img {
-        width: 280px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .about-content {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .about-content img {
-        width: 100%;
-        max-height: 250px;
-        border-radius: 15px;
-      }
-    }
-
-    .about-extra {
-      display: flex;
-      gap: 50px;
-      justify-content: space-between;
-      max-width: 1100px;
-      margin: 20px auto 0;
-      /* Réduction de la marge pour rapprocher les sections */
-    }
-
-    .experience,
-    .formation {
-      flex: 1;
-    }
-
-    .experience h2,
-    .formation h2 {
-      font-size: 24px;
-      color: #b35c00da;
-      margin-bottom: 10px;
-      /* Moins d’espace sous les titres */
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-
-    .experience-item,
-    .formation-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
-      /* Réduction de l’espace entre les items */
-      background: #f8f9fa;
-      padding: 12px;
-      border-radius: 10px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .experience-item img,
-    .formation-item img {
-      width: 80px;
-      height: 80px;
-      border-radius: 10px;
-      object-fit: cover;
-      border: 3px solid #b35c00da;
-    }
-
-    .exp-text,
-    .formation-text {
-      flex: 1;
-    }
-
-    .exp-text b,
-    .formation-text b {
-      font-size: 18px;
-      color: #333;
-    }
-
-    .exp-text p,
-    .formation-text p {
-      font-size: 15px;
-      color: #555;
-      margin: 3px 0;
-    }
-
-    @media (max-width: 768px) {
-      .about-extra {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .experience-item,
-      .formation-item {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .experience-item img,
-      .formation-item img {
-        width: 100px;
-        height: 100px;
-      }
-    }
-
-
-
-
-
-    #projects {
-      background: #ddd;
-    }
-
-    #contact {
-      background: #bbb;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -445,26 +82,38 @@
     <div class="experience">
       <h2>Expérience Professionnelle</h2>
       <div class="experience-item">
-        <img src="img/Airbus.jpg" alt="Entreprise 1">
+        <a href="https://www.airbus.com/en" target="_blank"><img src="img/Airbus.jpg" alt="Entreprise 1"></a>
         <div class="exp-text">
-          <b>Concepteur XR – AIRBUS</b>
-          <p><i>2022 - 2025 | Alternance</i></p>
+          <b>Concepteur VR / XR – <a href="https://www.airbus.com/en" target="_blank">AIRBUS</a></b>
+          <p><i>2022 - 2025 | Alternance | Toulouse, France</i></p>
           <p>Conception et développement d'expériences immersives en XR sous Unity, Unreal Engine et Unigine.</p>
         </div>
       </div>
       <div class="experience-item">
-        <img src="img/Nyx.png" alt="Entreprise 2">
+        <a href="https://www.airbus.com/en/products-services/helicopters" target="_blank"><img
+            src="img/AirbusHelicopters.jpg" alt="Entreprise 4"></a>
         <div class="exp-text">
-          <b>Développeur Unity – Studio NYX</b>
-          <p><i>2021 - 2022 | CDD </i></p>
+          <b>Développeur Réalité Mixte – <a href="https://www.airbus.com/en/products-services/helicopters"
+              target="_blank">AIRBUS Helicopters</a></b>
+          <p><i>2024 | Stage | Donauwörth, Allemagne</i></p>
+          <p>Implémentation de la réalité mixte dans un logiciel interne basé sur un moteur 3D. Création d'une
+            expérience immersive avec un simulateur d'hélicoptère.</p>
+        </div>
+      </div>
+      <div class="experience-item">
+        <a href="https://www.studio-nyx.com/" target="_blank"><img src="img/Nyx.png" alt="Entreprise 2"></a>
+        <div class="exp-text">
+          <b>Développeur Unity – <a href="https://www.studio-nyx.com/" target="_blank">Studio NYX</a></b>
+          <p><i>2021 - 2022 | CDD | Angoulême, France</i></p>
           <p>Participation au développement d'un moteur de simulation aéromaritme sous Unity.</p>
         </div>
       </div>
       <div class="experience-item">
-        <img src="img/aurora_game_studio_logo.jpg" alt="Entreprise 3">
+        <a href="https://auroragamestudio.com/" target="_blank"><img src="img/aurora_game_studio_logo.jpg"
+            alt="Entreprise 3"></a>
         <div class="exp-text">
-          <b>Développeur – Aurora Game Studio</b>
-          <p><i>2021 | Stage + CDD </i></p>
+          <b>Développeur – <a href="https://auroragamestudio.com/" target="_blank">Aurora Game Studio</a></b>
+          <p><i>2021 | Stage + CDD | Angoulême, France</i></p>
           <p>Développement d'API Java, C++ et C# pour une application Unity.</p>
         </div>
       </div>
@@ -475,19 +124,25 @@
     <div class="formation">
       <h2>Formation</h2>
       <div class="formation-item">
-        <img src="img/CnamENJMIN.jpg" alt="CNAM ENJMIN">
+        <a href="https://enjmin.cnam.fr/enjmin/ecole-nationale-du-jeu-et-des-medias-interactifs-accueil-1126103.kjsp"
+          target="_blank"><img src="img/CnamENJMIN.jpg" alt="CNAM ENJMIN"></a>
         <div class="formation-text">
-          <b>CNAM ENJMIN</b>
-          <p><i>2022 - 2025</i></p>
-          <p>Diplôme en alternance d’ingénieur en informatique et multimédia.</p>
+          <b>Diplôme d'ingénieur – <a
+              href="https://enjmin.cnam.fr/enjmin/ecole-nationale-du-jeu-et-des-medias-interactifs-accueil-1126103.kjsp"
+              target="_blank">CNAM ENJMIN</a></b>
+          <p><i>2022 - 2025 | Angoulême, France</i></p>
+          <p>Diplôme en alternance d’ingénieur en informatique et multimédia avec l'Ecole Nationale du Jeu et des Médias
+            Intéractifs Numériques (ENJMIN).</p>
         </div>
       </div>
       <div class="formation-item">
-        <img src="img/481px-La_Rochelle_Université.png" alt="Université Z">
+        <a href="https://www.univ-larochelle.fr/" target="_blank"><img src="img/481px-La_Rochelle_Université.png"
+            alt="Université Z"></a>
         <div class="formation-text">
-          <b>La Rochelle Université</b>
-          <p><i>2019 - 2021</i></p>
-          <p>DUT informatique</p>
+          <b>DUT informatique – <a href="https://www.univ-larochelle.fr/" target="_blank">La Rochelle Université</a></b>
+          <p><i>2019 - 2021 | La Rochelle, France</i></p>
+          <p>Apprentissage de l'algorithmie, de la programmation orientée objet et de la conception d'applications
+            informatiques.</p>
         </div>
       </div>
     </div>
@@ -495,10 +150,138 @@
 
 
   <div id="projects" class="section">
-    <img src="profilePicture.png" alt="Antoine Martin">
-    <div class="about-text">
-      <h2>Mes Projets</h2>
-      <p>Projets classe / Projets perso / Projets pro (Airbus/NYX).</p>
+    <h2>Mes projets</h2>
+    <div class="projects-container">
+      <div class="project-card">
+        <img src="img/Causticas.png" alt="Project Image" class="project-image">
+        <h2 class="project-title">Causticas</h2>
+        <p class="project-info">03/2024 - Projet étudiant</p>
+        <p class="project-info">Role : développeur</p>
+        <p class="project-info">Technologie: Unity</p>
+        <p class="project-info">Temps de création: 4 jours | Equipe de 2</p>
+        <p class="project-info">Prototype de jeu d'ambiance à la première personne basé sur de la génération procédurale</p>
+        <div class="project-links">
+          <a href="#">Test it</a>
+          <a href="#">Repo</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/ShotoMaton.png" alt="Project Image" class="project-image">
+        <h2 class="project-title">Shot-o-maton</h2>
+        <p class="project-info">04/2024 - Projet étudiant</p>
+        <p class="project-info">Role: développeur</p>
+        <p class="project-info">Technologie: Unity</p>
+        <p class="project-info">Temps de création: 5 jours | Equipe de 4</p>
+        <p class="project-info">Prototype de jeu multijoueur basé sur la reconnaissance d'expressions faciales</p>
+        <div class="project-links">
+          <a href="#">Test it</a>
+          <a href="#">Trailer</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/AirbusHelicopters.jpg" alt="Project Image" class="project-image">
+        <h2 class="project-title">Fist&Fury</h2>
+        <p class="project-info">02/2025 - Projet étudiant</p>
+        <p class="project-info">Role: développeur</p>
+        <p class="project-info">Technologie: Unreal Engine, MetaHumans</p>
+        <p class="project-info">Temps de création: 3 jours | Equipe de 4</p>
+        <p class="project-info">Jeu de tir en Réalité Virtuelle</p>
+        <div class="project-links">
+          <a href="#">Test it</a>
+          <a href="#">Repo</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/AirbusHelicopters.jpg" alt="Project Image" class="project-image">
+        <h2 class="project-title">Voronoïse</h2>
+        <p class="project-info">01/2024 - Projet étudiant</p>
+        <p class="project-info">Role: développeur</p>
+        <p class="project-info">Technologie: Unity, FMOD</p>
+        <p class="project-info">Temps de création: 3 jours | Equipe de 2</p>
+        <p class="project-info">Experience visuelle et auditive basé sur le diagramme de Voronoï et de la synthèse sonore</p>
+        <div class="project-links">
+          <a href="#">Test it</a>
+          <a href="#">Repo</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/SmallGarden.png" alt="Project Image" class="project-image">
+        <h2 class="project-title">Small Garden</h2>
+        <p class="project-info">11/2024 - Projet personnel</p>
+        <p class="project-info">Role: développeur</p>
+        <p class="project-info">Technologie: Unreal Engine</p>
+        <p class="project-info">Temps de création: 3 heures | Solo</p>
+        <p class="project-info">Création d'un environnement en vue d'une application en VR</p>
+        <div class="project-links">
+          <a href="#">Test it</a>
+          <a href="#">Repo</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/Escape.png" alt="Project Image" class="project-image">
+        <h2 class="project-title">Escape !</h2>
+        <p class="project-info">04/2024 - Projet étudiant</p>
+        <p class="project-info">Role: développeur, game designer</p>
+        <p class="project-info">Technologie: Unity</p>
+        <p class="project-info">Temps de création: 2 jours | Equipe de 3</p>
+        <p class="project-info">Mini jeu multijoueur au tour par tour</p>
+        <div class="project-links">
+          <a href="#">Test it</a>
+          <a href="#">Repo</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/LeverdeRideaux.png" alt="Project Image" class="project-image">
+        <h2 class="project-title">Lever de rideaux</h2>
+        <p class="project-info">12/2022 - Projet étudiant</p>
+        <p class="project-info">Role: développeur</p>
+        <p class="project-info">Technologie: Unity</p>
+        <p class="project-info">Temps de création: 3 jours | Equipe de 2</p>
+        <p class="project-info">Prototype de jeu de rapidité utilisant les expressions faciales du joueur</p>
+        <div class="project-links">
+          <a href="#">Test it</a>
+          <a href="#">Repo</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/SpinningDisplay.jpg" alt="Project Image" class="project-image">
+        <h2 class="project-title">Spinning display</h2>
+        <p class="project-info">01/2024 - Projet étudiant</p>
+        <p class="project-info">Role: développeur</p>
+        <p class="project-info">Technologie: Arduino, impression 3D</p>
+        <p class="project-info">Temps de création: 5 jours | Equipe de 2</p>
+        <p class="project-info">Prototype d'afficheur rotatif</p>
+        <div class="project-links">
+          <a href="#">Test it</a>
+          <a href="#">Repo</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/SimpleGPS.png" alt="Project Image" class="project-image">
+        <h2 class="project-title">Simple GPS</h2>
+        <p class="project-info">01/2023 - Projet étudiant</p>
+        <p class="project-info">Role: développeur</p>
+        <p class="project-info">Technologie: Javascript</p>
+        <p class="project-info">Temps de création: 2 jours | Solo</p>
+        <p class="project-info">Mini site web pouvant servir de GPS</p>
+        <div class="project-links">
+          <a href="#">Test it</a>
+          <a href="#">Repo</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/AirbusHelicopters.jpg" alt="Project Image" class="project-image">
+        <h2 class="project-title">Defender</h2>
+        <p class="project-info">06/2020 - Projet étudiant</p>
+        <p class="project-info">Role: développeur</p>
+        <p class="project-info">Technologie: Java</p>
+        <p class="project-info">Temps de création: 5 jours | Equipe de 5</p>
+        <p class="project-info">Projet de jeu vidéo basé sur le jeu d'arcade Defender</p>
+        <div class="project-links">
+          <a href="#">Test it</a>
+          <a href="#">Repo</a>
+        </div>
+      </div>
     </div>
   </div>
 
